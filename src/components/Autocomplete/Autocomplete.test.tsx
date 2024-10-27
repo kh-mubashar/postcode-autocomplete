@@ -25,7 +25,7 @@ describe('Autocomplete Component', () => {
     const input = container.querySelector('input');
     fireEvent.change(input!, { target: { value: 'SW1' } });
 
-    const suggestions = await screen.findAllByRole('button');
+    const suggestions = await screen.findAllByTestId('poscode-list-item');
     expect(suggestions.length).toBeGreaterThan(0);
   });
 });
