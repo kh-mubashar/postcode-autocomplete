@@ -11,6 +11,7 @@ const Container = styled.div`
   margin: 0 auto;
   
 `;
+
 export const Autocomplete = () => {
   const [query, setQuery] = useState('');
   const [queryDetails, setQueryDetails] = useState('');
@@ -62,7 +63,7 @@ export const Autocomplete = () => {
         onKeyDown={onKeyDownHandler} // Attach the onKeyDown handler
       />
       {suggestions && (
-        <List component="nav" style={{ position: 'absolute', width: '100%', maxHeight: 150, overflowY: 'auto' }}>
+        <List component="nav" style={{ position: 'absolute', width: '100%', maxHeight: 150, overflowY: 'auto', border: '1px solid #ddd' }}>
           {suggestions.map((suggestion, index) => (
             <ListItemButton
               key={suggestion}
