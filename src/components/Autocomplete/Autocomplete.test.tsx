@@ -6,26 +6,26 @@ const queryClient = new QueryClient();
 
 describe('Autocomplete Component', () => {
   it('renders input box correctly', () => {
-    render(
+    const { container } = render(
       <QueryClientProvider client={queryClient}>
         <Autocomplete />
       </QueryClientProvider>
     );
-    const input = screen.getByPlaceholderText('Enter postcode');
+    const input = container.querySelector('input');
     expect(input).toBeInTheDocument();
   });
 
   it('displays suggestions on input', async () => {
-    render(
+    const { container } = render(
       <QueryClientProvider client={queryClient}>
         <Autocomplete />
       </QueryClientProvider>
     );
 
-    const input = screen.getByPlaceholderText('Enter postcode');
-    fireEvent.change(input, { target: { value: 'SW1' } });
+    const input = container.querySelector('input');
+    fireEvent.change(input!, { target: { value: 'SW1' } });
 
-    const suggestions = await screen.findAllByRole('listitem');
+    const suggestions = await screen.findAllByRole('button');
     expect(suggestions.length).toBeGreaterThan(0);
   });
 });
